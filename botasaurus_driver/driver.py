@@ -624,7 +624,7 @@ class DriverBase:
     def _update_targets(self):
         return self._run(self._browser.update_targets())
 
-    def get(self, link: str, bypass_cloudflare=False, wait: Optional[int] = None):
+    def get(self, link: str, bypass_cloudflare=False, wait: Optional[int] = None, max_wait_time: int = 30):
         self._tab = self._run(self._browser.get(link))
         self.sleep(wait)
         wait_till_document_is_ready(self._tab, self.config.wait_for_complete_page_load)
